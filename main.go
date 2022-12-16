@@ -86,11 +86,14 @@ func DeleteRecipeHandler(c *gin.Context) {
    c.JSON(http.StatusOK, gin.H{"message": "Recipe has been deleted"})
 }
 
+router.GET("/recipes/search", SearchRecipesHandler)
+
 func main() {
    router := gin.Default()
    router.POST("/recipes", NewRecipeHandler)
    router.GET("/recipes", ListRecipesHandler)
    router.PUT("/recipes/:id", UpdateRecipeHandler)
    router.DELETE("/recipes/:id", DeleteRecipeHandler)
+   router.GET("/recipes/:id", GetRecipeHandler)
    router.Run()
 }
